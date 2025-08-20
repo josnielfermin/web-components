@@ -7,7 +7,6 @@ Este proyecto es una librería base de componentes en Next.js 14 + TailwindCSS s
 - **/src/components**: Aquí se encuentran los componentes base (Button, Input, Modal, Card, Alert, Toast, Tabs, Dropdown, Avatar, Badge).
 - Todos los componentes exponen `className` y usan TypeScript con props tipadas.
 - Accesibilidad (a11y) priorizada.
-- Listo para documentar con Storybook.
 - Sin estilos predeterminados, solo variantes configurables.
 
 ## Instalación y uso
@@ -23,7 +22,6 @@ npm run dev
 - Personalización vía `className`
 - Props tipadas
 - Accesibilidad
-- Documentación con Storybook
 
 ---
 

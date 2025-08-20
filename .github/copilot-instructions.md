@@ -6,6 +6,5 @@
 - Todos los componentes deben exponer `className` para personalización.
 - Usa TypeScript y tipa todas las props.
 - Mantén la accesibilidad (a11y) como prioridad.
-- Prepara los componentes para documentar con Storybook.
 - No incluyas estilos predeterminados, solo variantes configurables.
 - Los componentes base a implementar son: Button, Input, Modal, Card, Alert, Toast, Tabs, Dropdown, Avatar, Badge.
