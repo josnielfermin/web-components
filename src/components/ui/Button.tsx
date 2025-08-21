@@ -19,6 +19,7 @@ export interface ButtonProps
   radius?: ButtonRadius;
   loading?: boolean;
   fullWidth?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -34,6 +35,7 @@ export const Button: React.FC<ButtonProps> = ({
   loading,
   loadingLabel = "",
   fullWidth = false,
+  onClick,
   ...props
 }) => {
   const base =
