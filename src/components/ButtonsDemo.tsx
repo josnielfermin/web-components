@@ -1,24 +1,24 @@
 import { Button } from "@/components/ui/Button";
 import React from "react";
+import { useState } from "react";
 import { ButtonRadius } from "@/components/ui/Button";
 export const ButtonsDemo = () => {
   // Estado para demo interactiva de Button
   // Los valores por defecto deben coincidir con los tipos ButtonVariant y ButtonSize
-  const [buttonVariant, setButtonVariant] = React.useState<
+  const [buttonVariant, setButtonVariant] = useState<
     "filled" | "outlined" | "basic" | "link"
   >("filled");
-  const [buttonSize, setButtonSize] = React.useState<"sm" | "md" | "lg">("md");
-  const [buttonLabel, setButtonLabel] = React.useState("Demo Button");
-  const [buttonLoadingLabel, setButtonLoadingLabel] =
-    React.useState("Loading...");
-  const [buttonLeftIcon, setButtonLeftIcon] = React.useState(false);
-  const [buttonRightIcon, setButtonRightIcon] = React.useState(false);
-  const [buttonDisabled, setButtonDisabled] = React.useState(false);
-  const [buttonRadius, setButtonRadius] = React.useState<
+  const [buttonSize, setButtonSize] = useState<"sm" | "md" | "lg">("md");
+  const [buttonLabel, setButtonLabel] = useState("Demo Button");
+  const [buttonLoadingLabel, setButtonLoadingLabel] = useState("Loading...");
+  const [buttonLeftIcon, setButtonLeftIcon] = useState(false);
+  const [buttonRightIcon, setButtonRightIcon] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [buttonRadius, setButtonRadius] = useState<
     "none" | "sm" | "md" | "lg" | "full"
   >("md");
-  const [buttonLoading, setButtonLoading] = React.useState(false);
-  const [buttonFullWidth, setButtonFullWidth] = React.useState(false);
+  const [buttonLoading, setButtonLoading] = useState(false);
+  const [buttonFullWidth, setButtonFullWidth] = useState(false);
 
   // Iconos de ejemplo
   const icon = (
