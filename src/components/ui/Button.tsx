@@ -1,4 +1,5 @@
 import React from "react";
+import { IconLoading } from "@/icons";
 
 export type ButtonVariant = "filled" | "outlined" | "basic" | "link";
 export type ButtonSize = "sm" | "md" | "lg";
@@ -12,10 +13,12 @@ export interface ButtonProps
   rightIcon?: React.ReactNode;
   className?: string;
   label?: string | React.ReactNode;
+  loadingLabel?: string;
   disabled?: boolean;
   href?: string;
   radius?: ButtonRadius;
-  hasLoading?: boolean;
+  loading?: boolean;
+  fullWidth?: boolean;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -28,7 +31,9 @@ export const Button: React.FC<ButtonProps> = ({
   disabled = false,
   href,
   radius = "md",
-  hasLoading,
+  loading,
+  loadingLabel = "",
+  fullWidth = false,
   ...props
 }) => {
   const base =
@@ -43,9 +48,15 @@ export const Button: React.FC<ButtonProps> = ({
     link: "bg-transparent text-primary-1 p-0 hover:text-primary-2 border-none disabled:hover:text-primary-1",
   };
   const sizes: Record<ButtonSize, string> = {
-    sm: "px-3 py-1 text-sm h-8",
-    md: "px-4 py-2 text-base h-10",
-    lg: "px-6 py-3 text-lg h-12",
+    sm: `${
+      label || (loading && loadingLabel) ? "px-3 py-1" : "w-8"
+    } text-sm h-8`,
+    md: `${
+      label || (loading && loadingLabel) ? "px-4 py-2" : "w-10"
+    } text-base h-10`,
+    lg: `${
+      label || (loading && loadingLabel) ? "px-6 py-3" : "w-12"
+    } text-lg h-12`,
   };
   const actionStyles: Record<"true" | "false", string> = {
     true: "cursor-default",
@@ -66,6 +77,7 @@ export const Button: React.FC<ButtonProps> = ({
     className,
     actionStyles[String(disabled) as "true" | "false"],
     radiusStyles[radius],
+    fullWidth ? "w-full" : "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -78,9 +90,47 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       {...props}
     >
-      {leftIcon && <span className="btn-icon-left mr-2">{leftIcon}</span>}
-      <span>{label}</span>
-      {rightIcon && <span className="btn-icon-right ml-2">{rightIcon}</span>}
+      {leftIcon && (
+        <>
+          {loading ? (
+            <span className={`animate-spin ${loadingLabel ? "mr-2" : ""}`}>
+              <IconLoading size={16} />
+            </span>
+          ) : (
+            <span className={`btn-icon-left ${label ? "mr-2" : ""}`}>
+              {leftIcon}
+            </span>
+          )}
+        </>
+      )}
+      {loading && !leftIcon && !rightIcon && (
+        <span className={`animate-spin ${loadingLabel ? "mr-2" : ""}`}>
+          <IconLoading size={16} />
+        </span>
+      )}
+      <span
+        className="truncate max-w-full overflow-hidden text-ellipsis block"
+        style={{ minWidth: 0 }}
+        title={(() => {
+          const text = loading ? loadingLabel : label;
+          return typeof text === "string" && text ? text : undefined;
+        })()}
+      >
+        {loading ? loadingLabel : label}
+      </span>
+      {rightIcon && (
+        <>
+          {loading ? (
+            <span className={`animate-spin ${loadingLabel ? "ml-2" : ""}`}>
+              <IconLoading size={16} />
+            </span>
+          ) : (
+            <span className={`btn-icon-right ${label ? "ml-2" : ""}`}>
+              {rightIcon}
+            </span>
+          )}
+        </>
+      )}
     </button>
   );
 };

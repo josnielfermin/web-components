@@ -9,13 +9,16 @@ export const ButtonsDemo = () => {
   >("filled");
   const [buttonSize, setButtonSize] = React.useState<"sm" | "md" | "lg">("md");
   const [buttonLabel, setButtonLabel] = React.useState("Demo Button");
+  const [buttonLoadingLabel, setButtonLoadingLabel] =
+    React.useState("Loading...");
   const [buttonLeftIcon, setButtonLeftIcon] = React.useState(false);
   const [buttonRightIcon, setButtonRightIcon] = React.useState(false);
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const [buttonRadius, setButtonRadius] = React.useState<
     "none" | "sm" | "md" | "lg" | "full"
   >("md");
-  const [buttonHasLoading, setButtonHasLoading] = React.useState(false);
+  const [buttonLoading, setButtonLoading] = React.useState(false);
+  const [buttonFullWidth, setButtonFullWidth] = React.useState(false);
 
   // Iconos de ejemplo
   const icon = (
@@ -81,6 +84,14 @@ export const ButtonsDemo = () => {
           />
         </div>
         <div>
+          <label className="block text-xs mb-1">Loading Label</label>
+          <input
+            value={buttonLoadingLabel}
+            onChange={(e) => setButtonLoadingLabel(e.target.value)}
+            className="border rounded px-2 py-1"
+          />
+        </div>
+        <div>
           <label className="block text-xs mb-1">Left Icon</label>
           <input
             type="checkbox"
@@ -108,21 +119,33 @@ export const ButtonsDemo = () => {
           <label className="block text-xs mb-1">Loading</label>
           <input
             type="checkbox"
-            checked={buttonHasLoading}
-            onChange={(e) => setButtonHasLoading(e.target.checked)}
+            checked={buttonLoading}
+            onChange={(e) => setButtonLoading(e.target.checked)}
+          />
+        </div>
+        <div>
+          <label className="block text-xs mb-1">Full Width</label>
+          <input
+            type="checkbox"
+            checked={buttonFullWidth}
+            onChange={(e) => setButtonFullWidth(e.target.checked)}
           />
         </div>
       </div>
-      <Button
-        variant={buttonVariant}
-        size={buttonSize}
-        disabled={buttonDisabled}
-        leftIcon={buttonLeftIcon ? icon : undefined}
-        rightIcon={buttonRightIcon ? icon : undefined}
-        label={buttonLabel}
-        radius={buttonRadius}
-        hasLoading={buttonHasLoading}
-      />
+      <div className="max-w-[400px]">
+        <Button
+          variant={buttonVariant}
+          size={buttonSize}
+          disabled={buttonDisabled}
+          leftIcon={buttonLeftIcon ? icon : undefined}
+          rightIcon={buttonRightIcon ? icon : undefined}
+          label={buttonLabel}
+          loadingLabel={buttonLoadingLabel}
+          radius={buttonRadius}
+          loading={buttonLoading}
+          fullWidth={buttonFullWidth}
+        />
+      </div>
     </section>
   );
 };
