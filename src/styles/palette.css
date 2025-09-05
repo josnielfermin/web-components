@@ -1,7 +1,7 @@
 @theme inline {
   /* Dark Theme (default) */
-  --color-primary-1: #1e3a8a;
-  --color-primary-2: #3b82f6;
+  --color-primary-1: #3b82f6;
+  --color-primary-2: #1e3a8a;
   --color-primary-3: #93c5fd;
 
   --color-secondary-1: #4c1d95;
