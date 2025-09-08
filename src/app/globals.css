@@ -29,3 +29,7 @@ html {
   scroll-behavior: smooth;
   height: 100vh;
 }
+
+.hide-scroll::-webkit-scrollbar {
+  display: none !important;
+}

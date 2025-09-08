@@ -32,7 +32,9 @@ export default function RootLayout({
           <div className="flex min-h-[calc(100vh-128px)]">
             {/* Sidebar + Content */}
             <Sidebar />
-            <div className="flex-1 p-6">{children}</div>
+            <div className="flex-1 p-6 max-h-[calc(100vh-128px)] overflow-scroll hide-scroll">
+              {children}
+            </div>
           </div>
         </main>
         <Footer />

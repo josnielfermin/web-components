@@ -25,7 +25,7 @@ export const Sidebar: React.FC = () => {
               <li key={it.id}>
                 <Link
                   href={it.href}
-                  className={`block px-3 py-2 rounded ${
+                  className={`block px-3 py-2 rounded transition-all ${
                     active
                       ? "bg-primary-1/10 text-primary-1 font-semibold"
                       : "hover:bg-gray-2"
